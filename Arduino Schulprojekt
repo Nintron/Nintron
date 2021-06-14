@@ -1,9 +1,6 @@
 const int PWM_PIN=9;
 int pwmval = 0;
 
-unsigned long previousTime = 0;
-long interval = 5000;
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
