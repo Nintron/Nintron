@@ -1,0 +1,55 @@
+const int PWM_PIN=9;
+int pwmval = 0;
+
+unsigned long previousTime = 0;
+long interval = 5000;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(PWM_PIN, OUTPUT);
+
+  ledPIN();
+}
+
+void loop() {
+
+  Motor();
+
+  if(pwmval>15){
+    led_on();
+  }
+  else if(pwmval==0){
+    led_off();
+  }
+}
+
+void Motor(){
+    if(Serial.available()>1){
+    pwmval = Serial.parseInt();
+    Serial.print("Set speed to: ");
+    Serial.println(pwmval);
+    analogWrite(PWM_PIN, pwmval);
+    Serial.println("Done");
+  }
+  
+}
+
+void ledPIN(){
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+}
+
+void led_on(){
+    digitalWrite(2,HIGH);
+    digitalWrite(3,HIGH);
+    digitalWrite(4,HIGH);  
+}
+
+void led_off(){
+    digitalWrite(2,LOW);
+    digitalWrite(3,LOW);
+    digitalWrite(4,LOW);  
+}
+
