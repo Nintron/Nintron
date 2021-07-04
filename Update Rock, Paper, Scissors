@@ -1,0 +1,70 @@
+import java.util.*;
+import java.util.Scanner;
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		boolean gewonnen = false;
+		
+		Scanner scanner = new Scanner(System.in);
+		
+	while(!gewonnen) {
+		System.out.println("Scissors(1), Rock(2) oder Paper(3)? ");
+		int pick = scanner.nextInt(3)+1;
+		
+		Random random = new Random();
+		int x = random.nextInt(3)+1;
+		
+		switch(x) {
+			// Zahl 1 ist Schere
+		
+			case 1:
+				if(pick==x) {
+					System.out.println("Draw ! You both took scissors ");
+				}
+				else if (pick==2) {
+					System.out.println("You won with Rock against scissors ");
+					gewonnen = true;
+				}
+				else {
+					System.out.println("You lost! try again");
+				}
+				break;
+				
+			case 2:
+				//Zahl 2 ist Stein
+				if(pick==x) {
+					System.out.println("You both took Rock ");
+				}
+				else if(pick==3) {
+					System.out.println("You won with Paper against Rock ");
+					gewonnen = true;
+				}
+				else {
+					System.out.println("You lost! try again");
+				}
+				break;
+			
+			case 3:
+				// Zahl 3 ist Papier
+				if(pick==x) {
+					System.out.println("Both picked paper");
+				}
+				else if(pick==1) {
+					System.out.println("You won with scissors against paper");
+					gewonnen = true;
+				}
+				else {
+					System.out.println("You lost! Try again");
+				}
+				break;
+		}
+		}// for Schleife Ende
+	}// void main
+} //class
+
+
+
+
